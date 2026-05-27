@@ -1,0 +1,41 @@
+{
+  "format": "tourbox-preset",
+  "schemaVersion": 1,
+  "tbVersion": "1.8",
+  "device": "elite",
+  "bindings": {
+    "tall": {
+      "type": "mouse",
+      "action": "middle"
+    },
+    "side": {
+      "type": "mouse",
+      "action": "left"
+    },
+    "top": {
+      "type": "mouse",
+      "action": "right"
+    },
+    "short": {
+      "type": "mouse",
+      "action": "double"
+    },
+    "knob": {
+      "type": "raw",
+      "hex": "08 04 01 f2 00 78 35 00 00 00 00 00"
+    },
+    "dial": {
+      "type": "raw",
+      "hex": "08 04 01 f2 00 24 32 00 00 00 00 00"
+    },
+    "c1": {
+      "type": "mouse",
+      "action": "wheel_up"
+    },
+    "c2": {
+      "type": "mouse",
+      "action": "wheel_down"
+    }
+  },
+  "name": "Cal 04 Mouse"
+}

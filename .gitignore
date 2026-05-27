@@ -1,0 +1,22 @@
+# build / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# tbtool inspection output
+dec/
+
+# editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

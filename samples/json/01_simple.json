@@ -1,0 +1,53 @@
+{
+  "format": "tourbox-preset",
+  "schemaVersion": 1,
+  "tbVersion": "1.8",
+  "device": "elite",
+  "bindings": {
+    "tall": {
+      "type": "key",
+      "key": "C"
+    },
+    "side": {
+      "type": "key",
+      "key": "A"
+    },
+    "top": {
+      "type": "key",
+      "key": "B"
+    },
+    "short": {
+      "type": "key",
+      "key": "D"
+    },
+    "up": {
+      "type": "key",
+      "key": "E"
+    },
+    "down": {
+      "type": "key",
+      "key": "F"
+    },
+    "left": {
+      "type": "key",
+      "key": "G"
+    },
+    "right": {
+      "type": "key",
+      "key": "H"
+    },
+    "c1": {
+      "type": "key",
+      "key": "I"
+    },
+    "c2": {
+      "type": "key",
+      "key": "J"
+    },
+    "tour": {
+      "type": "key",
+      "key": "K"
+    }
+  },
+  "name": "Cal 01 Simple Keys"
+}

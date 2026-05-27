@@ -1,0 +1,41 @@
+{
+  "format": "tourbox-preset",
+  "schemaVersion": 1,
+  "tbVersion": "1.8",
+  "device": "elite",
+  "bindings": {
+    "tall": {
+      "type": "key",
+      "key": "Tab"
+    },
+    "side": {
+      "type": "key",
+      "key": "F1"
+    },
+    "top": {
+      "type": "key",
+      "key": "Enter"
+    },
+    "short": {
+      "type": "key",
+      "key": "Esc"
+    },
+    "up": {
+      "type": "key",
+      "key": "ArrowUp"
+    },
+    "down": {
+      "type": "key",
+      "key": "ArrowDown"
+    },
+    "left": {
+      "type": "key",
+      "key": "Delete"
+    },
+    "right": {
+      "type": "key",
+      "key": "Backspace"
+    }
+  },
+  "name": "Cal 05 Special Keys"
+}

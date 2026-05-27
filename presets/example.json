@@ -1,0 +1,14 @@
+{
+  "format": "tourbox-preset",
+  "schemaVersion": 1,
+  "tbVersion": "1.8",
+  "device": "elite",
+  "name": "Example (hand-written)",
+  "bindings": {
+    "0x03": { "type": "key", "key": "Space" },
+    "0x10": { "type": "key", "key": "E", "label": "Eraser" },
+    "0x11": { "type": "key", "key": "B", "label": "Brush" },
+    "0x04": { "type": "rotary", "cw": { "key": "]" }, "ccw": { "key": "[" } },
+    "0x20": { "type": "raw", "hex": "08 04 00 13 00 00 00 00 00 00 00 00" }
+  }
+}

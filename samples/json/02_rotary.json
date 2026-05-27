@@ -1,0 +1,48 @@
+{
+  "format": "tourbox-preset",
+  "schemaVersion": 1,
+  "tbVersion": "1.8",
+  "device": "elite",
+  "bindings": {
+    "knob": {
+      "type": "rotary",
+      "cw": {
+        "key": "M"
+      },
+      "ccw": {
+        "key": "N"
+      }
+    },
+    "scroll": {
+      "type": "rotary",
+      "cw": {
+        "key": "P"
+      },
+      "ccw": {
+        "key": "Q"
+      }
+    },
+    "scroll_press": {
+      "type": "key",
+      "key": "O"
+    },
+    "dial": {
+      "type": "rotary",
+      "cw": {
+        "key": "S"
+      },
+      "ccw": {
+        "key": "T"
+      }
+    },
+    "knob_press": {
+      "type": "key",
+      "key": "L"
+    },
+    "dial_press": {
+      "type": "key",
+      "key": "R"
+    }
+  },
+  "name": "Cal 02 Rotary"
+}

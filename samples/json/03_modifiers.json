@@ -1,0 +1,53 @@
+{
+  "format": "tourbox-preset",
+  "schemaVersion": 1,
+  "tbVersion": "1.8",
+  "device": "elite",
+  "bindings": {
+    "tall": {
+      "type": "key",
+      "key": "A",
+      "mods": [
+        "alt"
+      ]
+    },
+    "side": {
+      "type": "key",
+      "key": "A",
+      "mods": [
+        "ctrl"
+      ]
+    },
+    "top": {
+      "type": "key",
+      "key": "A",
+      "mods": [
+        "shift"
+      ]
+    },
+    "short": {
+      "type": "key",
+      "key": "A",
+      "mods": [
+        "win"
+      ]
+    },
+    "up": {
+      "type": "key",
+      "key": "A",
+      "mods": [
+        "ctrl",
+        "shift"
+      ]
+    },
+    "down": {
+      "type": "key",
+      "key": "A",
+      "mods": [
+        "ctrl",
+        "alt"
+      ]
+    }
+  },
+  "name": "Cal 03 Modifiers"
+}
