@@ -27,6 +27,9 @@ __all__ = ["encode_action", "decode_action", "EncodeError"]
 
 TYPE_SINGLE = 0x00
 TYPE_DUAL = 0x08
+# The two-way rotary type byte carries the rotation speed in its low 3 bits
+# (payload[0] == TYPE_DUAL | speed_code); Fast=0, Medium=1, Slow=2. See codes.py.
+SPEED_MASK = 0x07
 
 # sub-action A occupies payload[2:7], sub-action B payload[7:12]
 _SUBA = slice(2, 7)
@@ -115,7 +118,11 @@ def encode_action(action: dict) -> bytes:
         b = action.get("ccw") or action.get("down")
         if not (a and b):
             raise EncodeError("rotary needs two directions (cw/ccw or up/down)")
-        p[0] = TYPE_DUAL
+        try:
+            speed_code = codes.rotary_speed_code(action.get("speed", "fast"))
+        except KeyError as e:
+            raise EncodeError(str(e)) from e
+        p[0] = TYPE_DUAL | speed_code
         p[_SUBA] = _encode_sub(a)
         p[_SUBB] = _encode_sub(b)
         return bytes(p)
@@ -177,8 +184,14 @@ def _try_semantic(payload: bytes) -> dict | None:
 
     if b_type == TYPE_SINGLE and sub_a is not None and sub_b is None:
         return _single_to_action(sub_a)
-    if b_type == TYPE_DUAL and sub_a is not None and sub_b is not None:
-        return {"type": "rotary", "cw": sub_a, "ccw": sub_b}
+    # rotary: two-way flag 0x08 in payload[0], low bits carry the rotation speed.
+    if (b_type & ~SPEED_MASK) == TYPE_DUAL and sub_a is not None and sub_b is not None:
+        speed = codes.rotary_speed_name(b_type & SPEED_MASK)
+        if speed is not None:
+            out = {"type": "rotary", "cw": sub_a, "ccw": sub_b}
+            if speed != "fast":  # keep default-speed rotaries byte-identical
+                out["speed"] = speed
+            return out
     return None
 
 

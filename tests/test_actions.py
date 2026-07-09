@@ -18,6 +18,11 @@ CASES = [
     {"type": "rotary", "cw": {"key": "]"}, "ccw": {"key": "["}},
     {"type": "rotary", "cw": {"key": "+", "mods": ["ctrl"]},
                        "ccw": {"key": "-", "mods": ["ctrl"]}},
+    {"type": "rotary", "speed": "medium",
+     "cw": {"mouse": "wheel_down"}, "ccw": {"mouse": "wheel_up"}},
+    {"type": "rotary", "speed": "slow",
+     "cw": {"key": "]", "mods": ["ctrl", "alt"]},
+     "ccw": {"key": "[", "mods": ["ctrl", "alt"]}},
     {"type": "raw", "hex": "08 04 01 f2 00 78 35 00 00 00 00 00"},
 ]
 
@@ -78,3 +83,12 @@ def test_special_keys():
     assert b["short"] == {"type": "key", "key": "Esc"}
     assert b["up"] == {"type": "key", "key": "ArrowUp"}
     assert b["right"] == {"type": "key", "key": "Backspace"}
+
+
+def test_rotary_speed():
+    # 06_speed.tb: three rotaries set to three speeds in one export ->
+    # Fast=0x08 (default, no key), Medium=0x09, Slow=0x0a in payload byte 0.
+    b = _bindings("06_speed.tb")
+    assert b["knob"]["type"] == "rotary" and "speed" not in b["knob"]  # Fast (default)
+    assert b["scroll"].get("speed") == "medium"
+    assert b["dial"].get("speed") == "slow"

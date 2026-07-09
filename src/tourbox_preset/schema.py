@@ -22,6 +22,7 @@ FORMAT = "tourbox-preset"
 SCHEMA_VERSION = 1
 
 _ACTION_TYPES = {"none", "raw", "key", "rotary", "mouse", "macro", "builtin", "tourmenu"}
+_ROTARY_SPEEDS = {"fast", "medium", "slow"}
 
 
 class SchemaError(ValueError):
@@ -61,3 +62,6 @@ def _validate_action(key: str, action: object) -> None:
         has_ccw = "ccw" in action or "down" in action
         if not (has_cw and has_ccw):
             raise SchemaError(f"{where}: rotary requires two directions (cw/ccw or up/down)")
+        speed = action.get("speed")
+        if speed is not None and speed not in _ROTARY_SPEEDS:
+            raise SchemaError(f"{where}: rotary speed must be one of {sorted(_ROTARY_SPEEDS)}")

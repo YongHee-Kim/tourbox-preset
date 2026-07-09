@@ -23,6 +23,7 @@ __all__ = [
     "CAT_KEY", "CAT_EXT", "CAT_MOUSE",
     "resolve_key", "key_label",
     "MOUSE", "mouse_name",
+    "ROTARY_SPEEDS", "rotary_speed_code", "rotary_speed_name",
 ]
 
 # ---------------------------------------------------------------------------
@@ -146,6 +147,30 @@ _MOUSE_BY_CODE = {v: k for k, v in MOUSE.items()}
 
 def mouse_name(code: int) -> str | None:
     return _MOUSE_BY_CODE.get(code)
+
+
+# ---------------------------------------------------------------------------
+# Rotary rotation speed (confirmed by calibration: three knobs set to three
+# different speeds in one export). The speed is packed into the LOW bits of the
+# two-way rotary type byte (payload[0] == 0x08 | speed_code); Fast is default.
+#   Fast = 0x08 | 0, Medium = 0x08 | 1, Slow = 0x08 | 2
+# Speed applies only to rotary "turn" (two-way) records, never to key/mouse/press.
+# ---------------------------------------------------------------------------
+ROTARY_SPEEDS: dict[str, int] = {"fast": 0, "medium": 1, "slow": 2}
+_SPEED_BY_CODE = {v: k for k, v in ROTARY_SPEEDS.items()}
+
+
+def rotary_speed_code(name: str) -> int:
+    """Return the speed code (0..2) for a speed name. Raises on unknown name."""
+    try:
+        return ROTARY_SPEEDS[name.lower()]
+    except (KeyError, AttributeError):
+        raise KeyError(f"unknown rotary speed {name!r}")
+
+
+def rotary_speed_name(code: int) -> str | None:
+    """Return the speed name for a code, or ``None`` if not a confirmed speed."""
+    return _SPEED_BY_CODE.get(code)
 
 
 # ---------------------------------------------------------------------------
